@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generador QR - Personalizable</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+</head>
+<body>
+  <main class="app">
+    <h1>Generador QR personalizable</h1>
+
+    <section class="controls">
+      <label>Texto o URL
+        <input id="data" type="text" placeholder="https://ejemplo.com" value="https://example.com">
+      </label>
+
+      <label>Tamaño (px)
+        <input id="size" type="number" min="64" max="2048" value="300">
+      </label>
+
+      <label>Color puntos
+        <input id="dotColor" type="color" value="#000000">
+      </label>
+
+      <label>Fondo
+        <input id="bgColor" type="color" value="#ffffff">
+      </label>
+
+      <label>Forma de puntos
+        <select id="dotType">
+          <option value="square">Cuadrado</option>
+          <option value="rounded">Redondeado</option>
+          <option value="dots">Puntos</option>
+        </select>
+      </label>
+
+      <label>Corrección de errores
+        <select id="errorLevel">
+          <option value="L">L - Hasta 7% (baja)</option>
+          <option value="M" selected>M - Hasta 15% (media)</option>
+          <option value="Q">Q - Hasta 25% (alta)</option>
+          <option value="H">H - Hasta 30% (máxima)</option>
+        </select>
+      </label>
+
+      <label>Logo (opcional)
+        <input id="logoFile" type="file" accept="image/*">
+      </label>
+
+      <div class="buttons">
+        <button id="generate">Generar</button>
+        <button id="downloadPng">Descargar PNG</button>
+        <button id="downloadSvg">Descargar SVG</button>
+      </div>
+    </section>
+
+    <section class="preview">
+      <div id="qr-wrap">
+        <div id="qr-code"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
