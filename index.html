@@ -64,5 +64,41 @@
   </main>
 
   <script src="js/app.js"></script>
+<script>
+// Español por defecto; ?lang=en muestra la página en inglés.
+const EN = {
+ "Generador QR - Personalizable": "QR generator",
+ "Generador QR personalizable": "Custom QR generator",
+ "Texto o URL": "Text or URL",
+ "Tamaño (px)": "Size (px)",
+ "Color puntos": "Dot colour",
+ "Fondo": "Background",
+ "Forma de puntos": "Dot shape",
+ "Cuadrado": "Square",
+ "Redondeado": "Rounded",
+ "Puntos": "Dots",
+ "Corrección de errores": "Error correction",
+ "L - Hasta 7% (baja)": "L - Up to 7% (low)",
+ "M - Hasta 15% (media)": "M - Up to 15% (medium)",
+ "Q - Hasta 25% (alta)": "Q - Up to 25% (high)",
+ "H - Hasta 30% (máxima)": "H - Up to 30% (highest)",
+ "Logo (opcional)": "Logo (optional)",
+ "Generar": "Generate",
+ "Descargar PNG": "Download PNG",
+ "Descargar SVG": "Download SVG",
+ "https://ejemplo.com": "https://example.com"
+};
+const LANG = new URLSearchParams(location.search).get('lang') === 'en' ? 'en' : 'es', tr = s => LANG === 'en' ? EN[s] ?? s : s;
+if (LANG === 'en') {
+  document.documentElement.lang = 'en'; document.title = tr(document.title);
+  const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n; n = w.nextNode();) { const k = n.data.replace(/\s+/g, ' ').trim(); if (EN[k]) n.data = n.data.replace(/^(\s*)[\s\S]*?(\s*)$/, (_, a, b) => a + EN[k] + b); }
+  for (const el of document.querySelectorAll('[aria-label],[title],[alt],[placeholder]')) for (const a of ['aria-label', 'title', 'alt', 'placeholder']) if (EN[el.getAttribute(a)]) el.setAttribute(a, EN[el.getAttribute(a)]);
+}
+{ const b = document.createElement('p'); b.style.cssText = 'max-width:980px;margin:16px auto;text-align:center;font-size:14px';
+  b.innerHTML = LANG === 'en' ? '<a href="?lang=es" lang="es">Español</a> · <b>English</b>' : '<b>Español</b> · <a href="?lang=en" lang="en">English</a>';
+  b.querySelector('a').style.color = 'inherit'; (document.querySelector('[data-lang]') ?? document.body).append(b);
+  b.querySelector('a').addEventListener('click', e => { e.currentTarget.href = e.currentTarget.getAttribute('href').split('#')[0] + location.hash; }); }
+</script>
 </body>
 </html>

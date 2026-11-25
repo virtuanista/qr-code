@@ -1,3 +1,5 @@
+<p align="center"><b>Español</b> · <a href="README.en.md">English</a></p>
+
 # Generador QR
 
 ![Generador con un QR de puntos](docs/captura.webp)
