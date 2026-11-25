@@ -1,5 +1,7 @@
 # Generador QR
 
+![Generador con un QR de puntos](docs/captura.webp)
+
 Crea códigos QR personalizados en el navegador: **[virtuanista.github.io/qr-code](https://virtuanista.github.io/qr-code/)**.
 
 - Texto o URL, tamaño, colores, forma de los puntos y corrección de errores.
